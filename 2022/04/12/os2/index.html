@@ -1,0 +1,1332 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bloo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1uW411f72n?spm_id_from&#x3D;333.337.search-card.all.click，主要是对图做一些必要的解释，也许对你没有参考价值。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统-2">
+<meta property="og:url" content="https://bloofcx.github.io/2022/04/12/os2/index.html">
+<meta property="og:site_name" content="Bloo">
+<meta property="og:description" content="参考https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1uW411f72n?spm_id_from&#x3D;333.337.search-card.all.click，主要是对图做一些必要的解释，也许对你没有参考价值。。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316150049996.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316150202618.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316150400758.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316151001873.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316151159812.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316151703757.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316151912231.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316152234235.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316152332248.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316152507960.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316152722265.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316153024253.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316153144634.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316153602722.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316153941197.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316154316946.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316154537699.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316154828628.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316155114602.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316155345905.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316155707140.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316155914130.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316160256308.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316160602236.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316160928808.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316160945836.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316161240412.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316161318156.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316161719461.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316161922647.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316162042920.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316162717935.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316185003082.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316185230533.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316185424543.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316185811356.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316190356638.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316190516195.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316190535001.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316190659040.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316191815197.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316192049203.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316192258237.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316192530795.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316192758620.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316192835099.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316193051262.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316193543860.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316193619833.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316193831165.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316194110732.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316194447529.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316194725057.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316194916384.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316195257045.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316195311150.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316195417039.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316195735072.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316195935089.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316200757200.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316201303313.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316201428593.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316201644782.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316202222399.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316202307917.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316202420592.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316202729203.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316202907928.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316202931210.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316203008197.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316203608393.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316203935765.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316204006873.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316204158628.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316204436028.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316204750456.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316204802677.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316205002882.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220316205439909.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317093501831.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317093551747.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317093843765.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317094030744.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317094212990.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317094402522.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317094844068.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317095123293.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317095240884.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317095517202.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317095714835.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317095803078.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317101149943.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317101356539.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317101736888.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317102204705.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317102429558.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317102751076.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317103149857.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317104010327.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317104330558.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317104818593.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317105211437.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317105659276.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317105708144.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317110148346.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317110317695.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317111345352.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317111518383.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317114116923.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317114326780.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317114655209.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317114940338.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317115221895.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317115556400.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317115649853.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317120026581.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317174222615.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317174318786.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317174628338.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317174918896.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317175128757.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317175329645.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317175636002.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317175920030.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317180158687.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317184840176.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317185151704.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317185524459.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317185722120.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317190723521.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317191007531.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317191537025.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317191623604.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317191813441.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317192032401.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317192312399.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317192837756.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317192919075.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317193159445.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317193522806.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317193854353.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317194052621.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317194436628.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317194724955.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317194936376.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317195216164.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317195613561.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317200145674.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317200750121.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317201345547.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220317201436043.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318085930854.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318090131091.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318090625347.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318091205552.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318091620719.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318091952493.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318092008662.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318092724846.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318092934188.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318093106060.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318093132432.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318093343953.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318094441978.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318094541898.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318094911813.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318095031507.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318095246411.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318095606638.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318095722807.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318095809696.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318095918007.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318100018653.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318100111196.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318100249506.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318100616756.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318100932053.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318101523946.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318102720762.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318103559456.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318103707853.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318103942389.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318105155526.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318105337112.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318105918029.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318110131277.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318110346598.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318110513636.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318110749255.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318111130240.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318111402627.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318111457035.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318111908089.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318112110916.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318112505107.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318112853605.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318112953652.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318113125505.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318113203969.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318113457887.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318113943889.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318114246021.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318114811727.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318144114875.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318144733701.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318145038802.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318145640781.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318150037321.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318150235386.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318150337122.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318150427738.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318150715435.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318150849097.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318151007899.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318151306935.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318151731931.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318151811608.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318151935490.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318152020907.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318152131908.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318152643126.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318152833224.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318153053760.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318153314140.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318153338618.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318153648848.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318153824536.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318153925945.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318154232176.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318154349159.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318154517682.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318154844102.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318154947692.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318155130911.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318155431242.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318155827444.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318155950645.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318160226944.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318160422893.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318160518959.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318160553156.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318160750317.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318160956174.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318161130204.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318161255596.png">
+<meta property="og:image" content="https://bloofcx.github.io/img/mac/image-20220318161355144.png">
+<meta property="article:published_time" content="2022-04-12T14:48:40.000Z">
+<meta property="article:modified_time" content="2022-04-12T14:49:55.204Z">
+<meta property="article:author" content="Bloo">
+<meta property="article:tag" content="os">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bloofcx.github.io/img/mac/image-20220316150049996.png">
+  
+  
+  <title>操作系统-2 - Bloo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bloofcx.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bloo | LongMayTheSunShine</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="操作系统-2">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-12 22:48" pubdate>
+        April 12, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      72 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">操作系统-2</h1>
+            
+            <div class="markdown-body">
+              <h1 id="第八课-cpu-调度"><a href="#第八课-cpu-调度" class="headerlink" title="第八课 cpu 调度"></a>第八课 cpu 调度</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><img src="/img/mac/image-20220316150049996.png" srcset="/img/loading.gif" lazyload alt="image-20220316150049996"></p>
+<p>什么时候调度？</p>
+<p><img src="/img/mac/image-20220316150202618.png" srcset="/img/loading.gif" lazyload alt="image-20220316150202618">当某个进程从一个状态切换到另一个状态时，进行调度</p>
+<p><img src="/img/mac/image-20220316150400758.png" srcset="/img/loading.gif" lazyload alt="image-20220316150400758"></p>
+<p>上面的两个是用户态的抢占</p>
+<p>内核的不可抢占：当一个用户态进程发起系统调用进入内核态，操作系统可以确定返回的是发起系统调用的那个进程，在这个过程中不会发生等待。</p>
+<h2 id="调度原则"><a href="#调度原则" class="headerlink" title="调度原则"></a>调度原则</h2><p><img src="/img/mac/image-20220316151001873.png" srcset="/img/loading.gif" lazyload alt="image-20220316151001873"></p>
+<p>让进程更充分的利用 cpu 资源</p>
+<p>评价调度的指标</p>
+<p><img src="/img/mac/image-20220316151159812.png" srcset="/img/loading.gif" lazyload alt="image-20220316151159812"></p>
+<p>周转时间包括两块：初始化之后还要等待一段时间才能被 cpu 执行的等待时间，执行过程中的执行时间</p>
+<p><img src="/img/mac/image-20220316151703757.png" srcset="/img/loading.gif" lazyload alt="image-20220316151703757"></p>
+<p>上面的指标有的是冲突的，如响应时间和吞吐量，我们要根据调度算法力求达到平衡。</p>
+<p>我们希望算法有这样的效果：</p>
+<p><img src="/img/mac/image-20220316151912231.png" srcset="/img/loading.gif" lazyload alt="image-20220316151912231"></p>
+<p><img src="/img/mac/image-20220316152234235.png" srcset="/img/loading.gif" lazyload alt="image-20220316152234235"></p>
+<p><img src="/img/mac/image-20220316152332248.png" srcset="/img/loading.gif" lazyload alt="image-20220316152332248"></p>
+<p>希望每个进程得到 cpu 使用时间大致相同，</p>
+<p>每个进程等待 cpu 的时间也大致相同，为公平。</p>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><p><img src="/img/mac/image-20220316152507960.png" srcset="/img/loading.gif" lazyload alt="image-20220316152507960"></p>
+<p>多级反馈队列：既强调公平又根据进程的动态执行过程来动态调整。</p>
+<ul>
+<li>FCFS 先来先服务</li>
+</ul>
+<p><img src="/img/mac/image-20220316152722265.png" srcset="/img/loading.gif" lazyload alt="image-20220316152722265"></p>
+<p>如果前面的进程执行时间长，会导致后面进程的等待时间也相应长，严重影响周转时间和平均等待时间。</p>
+<p><img src="/img/mac/image-20220316153024253.png" srcset="/img/loading.gif" lazyload alt="image-20220316153024253"></p>
+<ul>
+<li>短任务优先 SRT/SPN</li>
+</ul>
+<p><img src="/img/mac/image-20220316153144634.png" srcset="/img/loading.gif" lazyload alt="image-20220316153144634"></p>
+<p>如果来了一个时间比现在正在执行的进程时间短的进程。抢占（SRT)：现在执行的进程进入就绪，新来的执行。</p>
+<p>非抢占(SPN)：新来的最短时间进程进入链头</p>
+<p><img src="/img/mac/image-20220316153602722.png" srcset="/img/loading.gif" lazyload alt="image-20220316153602722"></p>
+<p>可以看到最短任务优先的速度是最快的。</p>
+<p><img src="/img/mac/image-20220316153941197.png" srcset="/img/loading.gif" lazyload alt="image-20220316153941197"></p>
+<p>我们很难知道一个程序的执行时间。所以这个算法很难实现。</p>
+<p><img src="/img/mac/image-20220316154316946.png" srcset="/img/loading.gif" lazyload alt="image-20220316154316946"></p>
+<p>我们通过一种公式来预估程序的执行时间。</p>
+<p>通过 2 个时刻来预估下一刻的时间。也是一种根据过去来预估未来的方式。</p>
+<ul>
+<li>最高响应比优先</li>
+</ul>
+<p><img src="/img/mac/image-20220316154537699.png" srcset="/img/loading.gif" lazyload alt="image-20220316154537699"></p>
+<p>综合考虑了等待时间和执行时间。</p>
+<ul>
+<li>轮询 round robin</li>
+</ul>
+<p>让各个进程轮流占有时间片执行</p>
+<p><img src="/img/mac/image-20220316154828628.png" srcset="/img/loading.gif" lazyload alt="image-20220316154828628"></p>
+<p>没有占满时间片的直接交出。</p>
+<p><img src="/img/mac/image-20220316155114602.png" srcset="/img/loading.gif" lazyload alt="image-20220316155114602"></p>
+<p>时间片太小，切换太频繁。时间片太大，退化成 fcfs</p>
+<p>看看不同时间片大小下的平均等待时间</p>
+<p><img src="/img/mac/image-20220316155345905.png" srcset="/img/loading.gif" lazyload alt="image-20220316155345905"> fcfs 相对于 rr 牺牲了公平性</p>
+<ul>
+<li>多级反馈队列</li>
+</ul>
+<p>多级队列：</p>
+<p>把就绪队列分为多级，他们有不同优先级，每级采取不同算法</p>
+<p><img src="/img/mac/image-20220316155707140.png" srcset="/img/loading.gif" lazyload alt="image-20220316155707140"></p>
+<p>多级反馈队列：</p>
+<p>根据进程的动态变化，而让进程在不同的队列中移动</p>
+<p><img src="/img/mac/image-20220316155914130.png" srcset="/img/loading.gif" lazyload alt="image-20220316155914130"></p>
+<ul>
+<li>FFS 公平共享调度</li>
+</ul>
+<p><img src="/img/mac/image-20220316160256308.png" srcset="/img/loading.gif" lazyload alt="image-20220316160256308"></p>
+<p>现在介绍的调度算法是简单的，实际操作系统中可能更复杂，但是我们上面的算法都会体现出思想。如公平性和等待时间如何权衡等。</p>
+<p><img src="/img/mac/image-20220316160602236.png" srcset="/img/loading.gif" lazyload alt="image-20220316160602236"></p>
+<h2 id="实时调度"><a href="#实时调度" class="headerlink" title="实时调度"></a>实时调度</h2><p>区别于前面的通用型操作系统方法。</p>
+<p>实施调度大多用于工业控制如火车，机床和嵌入式之类的实施系统中。</p>
+<p><img src="/img/mac/image-20220316160928808.png" srcset="/img/loading.gif" lazyload alt="image-20220316160928808"></p>
+<p>实施系统分为两类：</p>
+<p><img src="/img/mac/image-20220316160945836.png" srcset="/img/loading.gif" lazyload alt="image-20220316160945836"></p>
+<p>前者的重要性任务如果不完成可能会发生灾难性的后果。所以必须要完成。</p>
+<p><img src="/img/mac/image-20220316161240412.png" srcset="/img/loading.gif" lazyload alt="image-20220316161240412"></p>
+<p>released：代表程序进入就绪</p>
+<p>就绪后等待一段时间执行，execution time</p>
+<p>deadline ：期限，执行时间一定不能超过期限，超过了实时性就不能得到满足</p>
+<p>relative deadline：在周期中的某个任务的相对期限。</p>
+<p><img src="/img/mac/image-20220316161318156.png" srcset="/img/loading.gif" lazyload alt="image-20220316161318156"></p>
+<p><img src="/img/mac/image-20220316161719461.png" srcset="/img/loading.gif" lazyload alt="image-20220316161719461"></p>
+<p><img src="/img/mac/image-20220316161922647.png" srcset="/img/loading.gif" lazyload alt="image-20220316161922647"></p>
+<p>任务的优先级随着执行过程而发生改变</p>
+<p>实施系统的两种调度算法</p>
+<p><img src="/img/mac/image-20220316162042920.png" srcset="/img/loading.gif" lazyload alt="image-20220316162042920"></p>
+<h2 id="多处理器调度"><a href="#多处理器调度" class="headerlink" title="多处理器调度"></a>多处理器调度</h2><p>前面的调度算法都是针对单个 cpu</p>
+<p>我们要考虑程序放哪个 cpu 上，和负载均衡问题。</p>
+<p>但是对于每个独立的 cpu 内部，里面用的方法和普通操作系统的调度算法差不多。</p>
+<p><img src="/img/mac/image-20220316162717935.png" srcset="/img/loading.gif" lazyload alt="image-20220316162717935"></p>
+<p>不多介绍。</p>
+<h2 id="优先级反转"><a href="#优先级反转" class="headerlink" title="优先级反转"></a>优先级反转</h2><h1 id="第九课-同步"><a href="#第九课-同步" class="headerlink" title="第九课 同步"></a>第九课 同步</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p><img src="/img/mac/image-20220316185003082.png" srcset="/img/loading.gif" lazyload alt="image-20220316185003082"></p>
+<p>上图中的线程可以替换进程，在这里都看作是 cpu 的调度单位</p>
+<p><img src="/img/mac/image-20220316185230533.png" srcset="/img/loading.gif" lazyload alt="image-20220316185230533"></p>
+<p>完成相应的共享和交互</p>
+<p>不确定性和不可重现的例子：</p>
+<p><img src="/img/mac/image-20220316185424543.png" srcset="/img/loading.gif" lazyload alt="image-20220316185424543"></p>
+<p>有点像 jvm 中的 i++的字节码：iinc 1，1 之类的</p>
+<p>java 中类似的并发问题：不确定进程 1 的时间片什么时候用完，从而在本该进行原子操作的代码中发生非原子操作</p>
+<p><img src="/img/mac/image-20220316185811356.png" srcset="/img/loading.gif" lazyload alt="image-20220316185811356"></p>
+<p>调度导致线程上下文切换，切换完毕后，进程 1 的寄存器要进行恢复，这样就又恢复到了 100。</p>
+<p><img src="/img/mac/image-20220316190356638.png" srcset="/img/loading.gif" lazyload alt="image-20220316190356638"></p>
+<h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><p>引入同步互斥，解决</p>
+<p><img src="/img/mac/image-20220316190516195.png" srcset="/img/loading.gif" lazyload alt="image-20220316190516195"></p>
+<p>方法：保证原子操作</p>
+<p><img src="/img/mac/image-20220316190535001.png" srcset="/img/loading.gif" lazyload alt="image-20220316190535001"></p>
+<p><img src="/img/mac/image-20220316190659040.png" srcset="/img/loading.gif" lazyload alt="image-20220316190659040"></p>
+<p>可能 a 先执行完，b 先执行完，还有一种一直僵持下去的情况，谁都无法 print。</p>
+<p>我们要通过同步机制解决这个问题。</p>
+<h3 id="临界区"><a href="#临界区" class="headerlink" title="临界区"></a>临界区</h3><p>有一段代码要访问共享资源如静态变量，访问共享资源的那段代码就是临界区</p>
+<h3 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h3><p>保证访问临界区的进程只有一个，不允许多个进程都进入临界区</p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>a 等 b 的资源</p>
+<p>b 等 a 的资源</p>
+<h3 id="饥饿"><a href="#饥饿" class="headerlink" title="饥饿"></a>饥饿</h3><p>一个迟迟得不到资源的进程</p>
+<p><img src="/img/mac/image-20220316191815197.png" srcset="/img/loading.gif" lazyload alt="image-20220316191815197"></p>
+<p>例子：</p>
+<p><img src="/img/mac/image-20220316192049203.png" srcset="/img/loading.gif" lazyload alt="image-20220316192049203"></p>
+<p>其实就是两个进程做了重复的事，不是我们所期望的。</p>
+<p>可以用锁来解决</p>
+<p><img src="/img/mac/image-20220316192258237.png" srcset="/img/loading.gif" lazyload alt="image-20220316192258237"></p>
+<p>锁住冰箱，粒度太大了，我们可以用粒度更小的标签来当作锁</p>
+<p><img src="/img/mac/image-20220316192530795.png" srcset="/img/loading.gif" lazyload alt="image-20220316192530795"></p>
+<p>但是依旧存在问题</p>
+<p>如果进程切换在第二个 if 语句，那么一样会出问题</p>
+<p><img src="/img/mac/image-20220316192758620.png" srcset="/img/loading.gif" lazyload alt="image-20220316192758620"></p>
+<p><img src="/img/mac/image-20220316192835099.png" srcset="/img/loading.gif" lazyload alt="image-20220316192835099"></p>
+<p>如果把放置标签放在第一步</p>
+<p>根本不会有人去买面包</p>
+<p><img src="/img/mac/image-20220316193051262.png" srcset="/img/loading.gif" lazyload alt="image-20220316193051262"></p>
+<p>比如 a 先放标签，b 也放标签，到了判断有无标签的时候，都进不去 if 里面的代码块。</p>
+<p>为便签增加标签，依旧不行</p>
+<p><img src="/img/mac/image-20220316193543860.png" srcset="/img/loading.gif" lazyload alt="image-20220316193543860"></p>
+<p><img src="/img/mac/image-20220316193619833.png" srcset="/img/loading.gif" lazyload alt="image-20220316193619833"></p>
+<p><img src="/img/mac/image-20220316193831165.png" srcset="/img/loading.gif" lazyload alt="image-20220316193831165"></p>
+<p>这样的逻辑可以解决一个人买面包且不多买</p>
+<p>但是</p>
+<p><img src="/img/mac/image-20220316194110732.png" srcset="/img/loading.gif" lazyload alt="image-20220316194110732"></p>
+<p>这只是两个进程的情况，很难推广到多个。</p>
+<p>另一个解决方案<img src="/img/mac/image-20220316194447529.png" srcset="/img/loading.gif" lazyload alt="image-20220316194447529"></p>
+<p>同一时间只能有一个进程执行临界区的的代码，其他进程如果想进来需要等待。</p>
+<p><img src="/img/mac/image-20220316194725057.png" srcset="/img/loading.gif" lazyload alt="image-20220316194725057"></p>
+<h3 id="怎么设计进入和离开临界区的代码"><a href="#怎么设计进入和离开临界区的代码" class="headerlink" title="怎么设计进入和离开临界区的代码"></a>怎么设计进入和离开临界区的代码</h3><p><img src="/img/mac/image-20220316194916384.png" srcset="/img/loading.gif" lazyload alt="image-20220316194916384"></p>
+<p>设计的原则，一个进程如果想进去，就一定会进去等等……</p>
+<p><img src="/img/mac/image-20220316195257045.png" srcset="/img/loading.gif" lazyload alt="image-20220316195257045"></p>
+<h4 id="方法-1-禁用硬件中断"><a href="#方法-1-禁用硬件中断" class="headerlink" title="方法 1 禁用硬件中断"></a>方法 1 禁用硬件中断</h4><p>中断使得操作系统有了打断进程的能力，但这也是得到不确定结果的主要原因。</p>
+<p><img src="/img/mac/image-20220316195311150.png" srcset="/img/loading.gif" lazyload alt="image-20220316195311150"></p>
+<p>缺点：中断主要是用于及时的外设进行交互的，如果停止了中断，硬件没法得到及时的响应，会有一定影响。</p>
+<p><img src="/img/mac/image-20220316195417039.png" srcset="/img/loading.gif" lazyload alt="image-20220316195417039"></p>
+<h4 id="方法-2-基于软件的解决方法"><a href="#方法-2-基于软件的解决方法" class="headerlink" title="方法 2 基于软件的解决方法"></a>方法 2 基于软件的解决方法</h4><p><img src="/img/mac/image-20220316195735072.png" srcset="/img/loading.gif" lazyload alt="image-20220316195735072"></p>
+<p>根据 turn 来决定谁进入临界区</p>
+<p><img src="/img/mac/image-20220316195935089.png" srcset="/img/loading.gif" lazyload alt="image-20220316195935089"></p>
+<p>假设 turn = 0；非 0 的进程进来会在 while 里面打转，只有 0 的进程会进入临界区</p>
+<p>progress：某个进程不往前走了，一直在临界区门口等着。如果进程 1 进去后把 turn 改成了 0，但是 1 想再进去一次，可是 0 不再来访问这次代码了，导致 1 无法进去，一直在门口打转。</p>
+<p>另一种方案</p>
+<p>flag[i] == 1 表示进程 i 想进入临界区</p>
+<p><img src="/img/mac/image-20220316200757200.png" srcset="/img/loading.gif" lazyload alt="image-20220316200757200"></p>
+<p>j 是现在正在临界区里的进程，它执行完后把 flag[j]置 0，让等待的进程 i 进入。</p>
+<p>这种方案有什么问题？</p>
+<p>没有互斥。</p>
+<p>初始的时候，两个进程的对应 flag 都为 0，都进入了第二条语句，造成两个人买面包问题。</p>
+<p>交换两条语句</p>
+<p><img src="/img/mac/image-20220316201303313.png" srcset="/img/loading.gif" lazyload alt="image-20220316201303313"></p>
+<p>进程 0 和进程 1 可能都在 while 循环中打转</p>
+<p>正确解法：</p>
+<p><img src="/img/mac/image-20220316201428593.png" srcset="/img/loading.gif" lazyload alt="image-20220316201428593"></p>
+<p>皮特森算法</p>
+<p><img src="/img/mac/image-20220316201644782.png" srcset="/img/loading.gif" lazyload alt="image-20220316201644782"></p>
+<p>互斥的证明：反证法，假设有两个进程 0，1。</p>
+<p>如果两个进程都在临界区，但是 turn 又只能有一个值，所以不会有互斥。</p>
+<p>德克斯算法 也是一个可行的算法</p>
+<p><img src="/img/mac/image-20220316202222399.png" srcset="/img/loading.gif" lazyload alt="image-20220316202222399"></p>
+<p>推广到 n 个进程：另一个算法</p>
+<p>让 n 个进程有序的进入临界区</p>
+<p><img src="/img/mac/image-20220316202307917.png" srcset="/img/loading.gif" lazyload alt="image-20220316202307917"></p>
+<p>bakery 算法，例子</p>
+<p>相当于银行取号，叫到号的进临界区，如果票号一样，就按他们的身份标识（身份证）来排。</p>
+<p><img src="/img/mac/image-20220316202420592.png" srcset="/img/loading.gif" lazyload alt="image-20220316202420592"></p>
+<p>总结</p>
+<p><img src="/img/mac/image-20220316202729203.png" srcset="/img/loading.gif" lazyload alt="image-20220316202729203"></p>
+<p>忙等：在 while 中循环打转</p>
+<h4 id="方法-3-更高级的抽象-原子操作指令"><a href="#方法-3-更高级的抽象-原子操作指令" class="headerlink" title="方法 3 更高级的抽象 原子操作指令"></a>方法 3 更高级的抽象 原子操作指令</h4><p><img src="/img/mac/image-20220316202907928.png" srcset="/img/loading.gif" lazyload alt="image-20220316202907928"></p>
+<p>只有获得锁的才能进入临界区</p>
+<p><img src="/img/mac/image-20220316202931210.png" srcset="/img/loading.gif" lazyload alt="image-20220316202931210"></p>
+<p>抽象怎么实现？</p>
+<p><img src="/img/mac/image-20220316203008197.png" srcset="/img/loading.gif" lazyload alt="image-20220316203008197"></p>
+<p>test-and-set：一条机器指令，完成通常的读写操作的两条指令</p>
+<p>exchange ： 输入的是两个内存单元</p>
+<p><img src="/img/mac/image-20220316203608393.png" srcset="/img/loading.gif" lazyload alt="image-20220316203608393"></p>
+<p>Test and Set 的具体使用</p>
+<p><img src="/img/mac/image-20220316203935765.png" srcset="/img/loading.gif" lazyload alt="image-20220316203935765"></p>
+<p>两个进程和 n 个进程都可以实现</p>
+<p>在自旋的进程还能再优化，让忙等的进程睡眠，进入一个等待队列，锁释放后再进行唤醒</p>
+<p><img src="/img/mac/image-20220316204006873.png" srcset="/img/loading.gif" lazyload alt="image-20220316204006873"></p>
+<p><img src="/img/mac/image-20220316204158628.png" srcset="/img/loading.gif" lazyload alt="image-20220316204158628"></p>
+<p>但是不忙等的情况会发生线程上下文切换，而忙等又占用一定的 cpu 资源。如果临界区的代码较长，可以考虑无忙等待；如果临界区的代码很短，那就可以等一会。</p>
+<p>exchange 实现机制</p>
+<p><img src="/img/mac/image-20220316204436028.png" srcset="/img/loading.gif" lazyload alt="image-20220316204436028"></p>
+<p>基于原子操作指令的同步现在是广泛使用的</p>
+<p><img src="/img/mac/image-20220316204750456.png" srcset="/img/loading.gif" lazyload alt="image-20220316204750456"></p>
+<p><img src="/img/mac/image-20220316204802677.png" srcset="/img/loading.gif" lazyload alt="image-20220316204802677"></p>
+<p>高优先级的进程在忙等的时候，因为低优先级进程的优先级低，导致无法释放锁。从而发生死锁。可以用上面介绍的优先级反转来解决。</p>
+<p><img src="/img/mac/image-20220316205002882.png" srcset="/img/loading.gif" lazyload alt="image-20220316205002882"></p>
+<h1 id="第十课-信号量和管程"><a href="#第十课-信号量和管程" class="headerlink" title="第十课 信号量和管程"></a>第十课 信号量和管程</h1><p>复习第九课</p>
+<p><img src="/img/mac/image-20220316205439909.png" srcset="/img/loading.gif" lazyload alt="image-20220316205439909"></p>
+<p>软件的开销是很大的，我们用硬件来支撑这个锁的概念。</p>
+<h2 id="信号量-sem"><a href="#信号量-sem" class="headerlink" title="信号量 sem"></a>信号量 sem</h2><p>临界区的读操作是可以并发执行的，但我们上面的都只能有一个进程进入临界区，这就引出信号量的概念</p>
+<p><img src="/img/mac/image-20220317093501831.png" srcset="/img/loading.gif" lazyload alt="image-20220317093501831"></p>
+<p>直到一个列车离开临界区，等待的那个列车会被离开的列车唤醒，进入临界区</p>
+<p><img src="/img/mac/image-20220317093551747.png" srcset="/img/loading.gif" lazyload alt="image-20220317093551747"></p>
+<h2 id="信号量的使用"><a href="#信号量的使用" class="headerlink" title="信号量的使用"></a>信号量的使用</h2><p><img src="/img/mac/image-20220317093843765.png" srcset="/img/loading.gif" lazyload alt="image-20220317093843765"></p>
+<p>一般来说，只唤醒一个进程的话，采用 fifo 机制，让等的最久的进程进行唤醒。</p>
+<p><img src="/img/mac/image-20220317094030744.png" srcset="/img/loading.gif" lazyload alt="image-20220317094030744"></p>
+<p>模拟 lock 操作，初值设成 1</p>
+<p><img src="/img/mac/image-20220317094212990.png" srcset="/img/loading.gif" lazyload alt="image-20220317094212990"></p>
+<p>模拟同步操作，将初值设为 0</p>
+<p><img src="/img/mac/image-20220317094402522.png" srcset="/img/loading.gif" lazyload alt="image-20220317094402522"></p>
+<p>当线程 a 需要线程 b 执行到某个地方时，才能接着执行，就可以采用上面的设 sem 初值为 0 的操作。</p>
+<p>上面的二进制 sem 有局限，看一下计数信号量的使用</p>
+<p><img src="/img/mac/image-20220317094844068.png" srcset="/img/loading.gif" lazyload alt="image-20220317094844068"></p>
+<p>我们可以有多个生产者往 buffer 中写数据，也可以有多个 consumer 往里面读数据，这都取决于我们的 sem 怎么设置。</p>
+<p>用二进制信号量做操作/取出的互斥</p>
+<p><img src="/img/mac/image-20220317095123293.png" srcset="/img/loading.gif" lazyload alt="image-20220317095123293"></p>
+<p>具体实现</p>
+<p>fullbuffer：bufffer 里面的数据初始值 0</p>
+<p>emptybuffer：当前生产者可以往 buffer 里面放多少个数据</p>
+<p><img src="/img/mac/image-20220317095240884.png" srcset="/img/loading.gif" lazyload alt="image-20220317095240884"></p>
+<p>确保互斥</p>
+<p><img src="/img/mac/image-20220317095517202.png" srcset="/img/loading.gif" lazyload alt="image-20220317095517202"></p>
+<p>可以有 n 个生产者进入 deposit</p>
+<p>执行完后把 full buffer+1,意味着通知消费者来取数据</p>
+<p><img src="/img/mac/image-20220317095714835.png" srcset="/img/loading.gif" lazyload alt="image-20220317095714835"></p>
+<p>消费者和生产者相反</p>
+<p><img src="/img/mac/image-20220317095803078.png" srcset="/img/loading.gif" lazyload alt="image-20220317095803078"></p>
+<p>如果 p/v 操作顺序改了，如消费者的 mutex -p 和 emptyBuffer - p 交换顺序</p>
+<p>有可能发生死锁。</p>
+<h3 id="信号量的实现"><a href="#信号量的实现" class="headerlink" title="信号量的实现"></a>信号量的实现</h3><p>等待队列里的进程，就是待唤醒的进程。</p>
+<p>信号量的本身结构和 pv 操作硬件原语</p>
+<p><img src="/img/mac/image-20220317101149943.png" srcset="/img/loading.gif" lazyload alt="image-20220317101149943"></p>
+<p><img src="/img/mac/image-20220317101356539.png" srcset="/img/loading.gif" lazyload alt="image-20220317101356539">和锁的区别：锁还可以进行忙等和等待队列；而信号量只能用等待队列进行。</p>
+<h2 id="管程-monitor"><a href="#管程-monitor" class="headerlink" title="管程 monitor"></a>管程 monitor</h2><p>最开始提出是用在简化高级语言的同步互斥问题。</p>
+<p>管程是什么？</p>
+<p>包含了一系列的共享变量，以及操作了这些共享变量的函数的总和</p>
+<p><img src="/img/mac/image-20220317101736888.png" srcset="/img/loading.gif" lazyload alt="image-20220317101736888"></p>
+<p>条件变量？</p>
+<p>在访问共享资源和变量的过程中，可能某个条件得不到满足，把得不到满足资源的线程挂起，就挂在条件变量变量上，根据条件个数来确定条件变量。</p>
+<p><img src="/img/mac/image-20220317102204705.png" srcset="/img/loading.gif" lazyload alt="image-20220317102204705"></p>
+<p>进入管程是互斥的，需要 lock，所以用了进入队列 entry lock。</p>
+<p>圆柱体代表着操作共享变量的函数，x 和 y 是条件变量，条件变量也有自己的等待队列。</p>
+<p>对条件变量有 wait 和 signal 操作</p>
+<p><img src="/img/mac/image-20220317102429558.png" srcset="/img/loading.gif" lazyload alt="image-20220317102429558"></p>
+<p>条件变量的实现以及条件变量的两个方法</p>
+<p><img src="/img/mac/image-20220317102751076.png" srcset="/img/loading.gif" lazyload alt="image-20220317102751076"></p>
+<p>schedule 是选择 ready 状态的线程去执行</p>
+<p>为什么要先 release 再 require？后面再说</p>
+<p>wakeup 是把 sleep 的线程改为 ready 状态</p>
+<p>我们再用管程来解决生产消费</p>
+<p><img src="/img/mac/image-20220317103149857.png" srcset="/img/loading.gif" lazyload alt="image-20220317103149857"></p>
+<p>notFull 和 not empty 是两个条件变量</p>
+<p>count 表示 buffer 的大小</p>
+<p><img src="/img/mac/image-20220317104010327.png" srcset="/img/loading.gif" lazyload alt="image-20220317104010327"></p>
+<p>先看生产者，当 buffer 满了之后，我们将 lock 传入 wait 方法，先释放一次锁，让其他线程先来执行（不能让这个线程带着锁去等待 c），当它再次得到锁之后（notfull.singal)，依旧会在生产者的 while 里继续判断 count==n；</p>
+<p>消费者这边也是一样的</p>
+<p><img src="/img/mac/image-20220317104330558.png" srcset="/img/loading.gif" lazyload alt="image-20220317104330558"></p>
+<p>再来看一个细节，当一个线程调用了条件变量的 signal 方法后，是直接让唤醒的线程直接执行，还是等待调用 signal 方法的线程执行完毕后再执行</p>
+<p>hoare 方法，让唤醒的线程直接去执行</p>
+<p>hansen，让调用 signal 的执行完毕后再去执行那个被唤醒的线程</p>
+<p><img src="/img/mac/image-20220317104818593.png" srcset="/img/loading.gif" lazyload alt="image-20220317104818593"></p>
+<p>if 还是 while</p>
+<p><img src="/img/mac/image-20220317105211437.png" srcset="/img/loading.gif" lazyload alt="image-20220317105211437"></p>
+<p>因为 hansen 的实现方式可能导致唤醒的多个线程来抢占 cpu，导致 count 不为 n，所以要用 whiile 做判断</p>
+<p>hoare</p>
+<p>不需要多次判断 count==n，因为执行 signal 后就去执行唤醒的线程了，但是在执行 signal 之前一定会执行 count–</p>
+<h2 id="同步互斥基本总结"><a href="#同步互斥基本总结" class="headerlink" title="同步互斥基本总结"></a>同步互斥基本总结</h2><p>信号量和管程</p>
+<p><img src="/img/mac/image-20220317105659276.png" srcset="/img/loading.gif" lazyload alt="image-20220317105659276"></p>
+<p><img src="/img/mac/image-20220317105708144.png" srcset="/img/loading.gif" lazyload alt="image-20220317105708144"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h2><h3 id="读者-写者"><a href="#读者-写者" class="headerlink" title="读者-写者"></a>读者-写者</h3><p><img src="/img/mac/image-20220317110148346.png" srcset="/img/loading.gif" lazyload alt="image-20220317110148346"></p>
+<p><img src="/img/mac/image-20220317110317695.png" srcset="/img/loading.gif" lazyload alt="image-20220317110317695"></p>
+<p>读者优先：如果有人在读，又有人想写，写的人等着；当有人在读时，如果后面的读者想进来，也可以进来</p>
+<p>Rcount 位读者的数量，写者始终只有一个</p>
+<p>semwait 就是 p，sempost 就是 v</p>
+<p>读者优先的实现：</p>
+<p><img src="/img/mac/image-20220317111345352.png" srcset="/img/loading.gif" lazyload alt="image-20220317111345352"></p>
+<p><img src="/img/mac/image-20220317111518383.png" srcset="/img/loading.gif" lazyload alt="image-20220317111518383"></p>
+<p>如何实现写者优先？读者需要给两种写者让步，一种是正在执行写操作的写者，另一种是在等待队列中的写者，只要这两者都不存在，读者才能进入。</p>
+<p><img src="/img/mac/image-20220317114116923.png" srcset="/img/loading.gif" lazyload alt="image-20220317114116923"></p>
+<p><strong>上面用的是信号量，这里用管程实现</strong></p>
+<p><img src="/img/mac/image-20220317114326780.png" srcset="/img/loading.gif" lazyload alt="image-20220317114326780"></p>
+<p>伪代码 写优先</p>
+<p><img src="/img/mac/image-20220317114655209.png" srcset="/img/loading.gif" lazyload alt="image-20220317114655209"></p>
+<p>具体实现</p>
+<p><img src="/img/mac/image-20220317114940338.png" srcset="/img/loading.gif" lazyload alt="image-20220317114940338"></p>
+<p>有 writer 存在，就不能进行读。这是同时判断了 aw 和 ww，体现了写者优先。</p>
+<p>确保 ar=0，再去判断 wait writer 以及唤醒写者 体现可以有多个读者同时读；而写者要等到没有人在读或者写的时候才能进行写</p>
+<p><img src="/img/mac/image-20220317115221895.png" srcset="/img/loading.gif" lazyload alt="image-20220317115221895"></p>
+<p>写者的实现</p>
+<p><img src="/img/mac/image-20220317115556400.png" srcset="/img/loading.gif" lazyload alt="image-20220317115556400"></p>
+<p>具体代码</p>
+<p><img src="/img/mac/image-20220317115649853.png" srcset="/img/loading.gif" lazyload alt="image-20220317115649853"></p>
+<p>先判断等待的 writer，在判断等待的 reader，这里还用的是 broadcast 广播。</p>
+<p><img src="/img/mac/image-20220317120026581.png" srcset="/img/loading.gif" lazyload alt="image-20220317120026581"></p>
+<h3 id="哲学家吃饭"><a href="#哲学家吃饭" class="headerlink" title="哲学家吃饭"></a>哲学家吃饭</h3><p>五个人吃饭，一个人吃饭要两把叉子，总共五把叉子</p>
+<p><img src="/img/mac/image-20220317174222615.png" srcset="/img/loading.gif" lazyload alt="image-20220317174222615"></p>
+<p><img src="/img/mac/image-20220317174318786.png" srcset="/img/loading.gif" lazyload alt="image-20220317174318786"></p>
+<p>基本的想法，但是是错的。</p>
+<p>如果五个人同步执行，都执行了第二条语句，都准备执行第三个的时候就发生了死锁。</p>
+<p>再进一步呢？我们加个判断</p>
+<p><img src="/img/mac/image-20220317174628338.png" srcset="/img/loading.gif" lazyload alt="image-20220317174628338"></p>
+<p>依旧有问题：</p>
+<p>还是五把叉子一起拿起，一样有问题。</p>
+<p>如果修改了每个人的等待时间</p>
+<p><img src="/img/mac/image-20220317174918896.png" srcset="/img/loading.gif" lazyload alt="image-20220317174918896"></p>
+<p>虽然可行，但是随机时间是不固定的，我们不能保证每个哲学家都能吃上饭，如果一个哲学家要等特别久，这样还是不理想。</p>
+<p>如果我们给每个人吃饭操作都加上锁，虽然能解决，但是效率 很低。</p>
+<p><img src="/img/mac/image-20220317175128757.png" srcset="/img/loading.gif" lazyload alt="image-20220317175128757"></p>
+<p>上面方案的缺点</p>
+<p><img src="/img/mac/image-20220317175329645.png" srcset="/img/loading.gif" lazyload alt="image-20220317175329645"></p>
+<p>饥饿状态表明自己想要叉子（锁）</p>
+<p><img src="/img/mac/image-20220317175636002.png" srcset="/img/loading.gif" lazyload alt="image-20220317175636002"></p>
+<p><img src="/img/mac/image-20220317175920030.png" srcset="/img/loading.gif" lazyload alt="image-20220317175920030"></p>
+<p><img src="/img/mac/image-20220317180158687.png" srcset="/img/loading.gif" lazyload alt="image-20220317180158687"></p>
+<p><img src="/img/mac/image-20220317184840176.png" srcset="/img/loading.gif" lazyload alt="image-20220317184840176"></p>
+<p>哲学家的运行的函数：</p>
+<p><img src="/img/mac/image-20220317185151704.png" srcset="/img/loading.gif" lazyload alt="image-20220317185151704"></p>
+<p>拿叉子的函数 takeforks 的具体实现：</p>
+<p><img src="/img/mac/image-20220317185524459.png" srcset="/img/loading.gif" lazyload alt="image-20220317185524459"></p>
+<p>state 的赋值和拿叉子需要锁来保护</p>
+<p>再进一步：拿两把叉子的具体操作</p>
+<p>当我处于 hungry 并且左右邻居都没在吃饭</p>
+<p>我就可以拿两把叉子了，<strong>并且这里通知我自己可以吃饭了</strong>，后面还会有另外的场景来调用这个函数，就是另外一种情形。</p>
+<p><img src="/img/mac/image-20220317185722120.png" srcset="/img/loading.gif" lazyload alt="image-20220317185722120"></p>
+<p>putforks 具体操作</p>
+<p><img src="/img/mac/image-20220317190723521.png" srcset="/img/loading.gif" lazyload alt="image-20220317190723521"></p>
+<p>这里就复用了上面的代码</p>
+<p>自己吃完饭后判断左右邻居是能否吃饭，如果可以的话，就把它们给唤醒，并且把叉子给他们。</p>
+<p><img src="/img/mac/image-20220317191007531.png" srcset="/img/loading.gif" lazyload alt="image-20220317191007531"></p>
+<p>eat（）其实不需要了，因为拿到叉子后已经变成了 eat 状态，think（）可以用作初始化使用。</p>
+<p>伪代码 - 数据结构 - 定义各种变量 - 代码撰写，我们同步问题的这一章基本就是这样的流程，来解决同步互斥问题。</p>
+<h1 id="第-11-课-死锁和进程间通信"><a href="#第-11-课-死锁和进程间通信" class="headerlink" title="第 11 课 死锁和进程间通信"></a>第 11 课 死锁和进程间通信</h1><p>大纲</p>
+<p><img src="/img/mac/image-20220317191537025.png" srcset="/img/loading.gif" lazyload alt="image-20220317191537025"></p>
+<h2 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h2><p>我们把行车道理解成一种资源</p>
+<p><img src="/img/mac/image-20220317191623604.png" srcset="/img/loading.gif" lazyload alt="image-20220317191623604"></p>
+<p>车的倒退就是一种释放资源的过程。</p>
+<p><img src="/img/mac/image-20220317191813441.png" srcset="/img/loading.gif" lazyload alt="image-20220317191813441"></p>
+<p>死锁的出现是在并发的基础之上的。</p>
+<h2 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h2><p><img src="/img/mac/image-20220317192032401.png" srcset="/img/loading.gif" lazyload alt="image-20220317192032401"></p>
+<p>进程对资源有三种情况，请求，持有，释放。资源对应的状态时空闲，正在使用，空闲。</p>
+<p>有关资源：</p>
+<p><img src="/img/mac/image-20220317192312399.png" srcset="/img/loading.gif" lazyload alt="image-20220317192312399"></p>
+<p>如果一个进程拥有一个资源并且请求其他资源，就有可能发生死锁。</p>
+<p>一般来说，一个进程的资源得不到满足，他就会进入 blocked 状态</p>
+<p>我们用一个有向图来表示资源分配图</p>
+<p><img src="/img/mac/image-20220317192837756.png" srcset="/img/loading.gif" lazyload alt="image-20220317192837756"></p>
+<p><img src="/img/mac/image-20220317192919075.png" srcset="/img/loading.gif" lazyload alt="image-20220317192919075"></p>
+<p>举个例子</p>
+<p>r2 中有两个资源实例，一个给了 p1，一个给了 p2.</p>
+<p>p1 请求 r1 资源但是无法得到满足，因为 r1 资源已经给 p2 占用了。</p>
+<p><img src="/img/mac/image-20220317193159445.png" srcset="/img/loading.gif" lazyload alt="image-20220317193159445"></p>
+<p>虽然这里有进程的 sleep，但是没有产生死锁。</p>
+<p>我们更进一步，看看</p>
+<p><img src="/img/mac/image-20220317193522806.png" srcset="/img/loading.gif" lazyload alt="image-20220317193522806"></p>
+<p>图中有一个 p1 到 p3 的大环，有 p2 到 p3 的小环。这里有死锁存在。因为三个线程最后都会 sleep，互相等待对方释放资源。</p>
+<p>另一种情况</p>
+<p><img src="/img/mac/image-20220317193854353.png" srcset="/img/loading.gif" lazyload alt="image-20220317193854353"></p>
+<p>p2 运行一段时间后会释放 r1 的实例，打破 p1 和 p3 的“死锁”。</p>
+<p>小总结</p>
+<p><img src="/img/mac/image-20220317194052621.png" srcset="/img/loading.gif" lazyload alt="image-20220317194052621"></p>
+<h2 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h2><p><img src="/img/mac/image-20220317194436628.png" srcset="/img/loading.gif" lazyload alt="image-20220317194436628"></p>
+<p>循环等待其实就是上面所说的环</p>
+<p>上面所介绍的是必要条件，并不是说这四个条件会产生死锁。</p>
+<h2 id="死锁处理办法"><a href="#死锁处理办法" class="headerlink" title="死锁处理办法"></a>死锁处理办法</h2><p><img src="/img/mac/image-20220317194724955.png" srcset="/img/loading.gif" lazyload alt="image-20220317194724955"></p>
+<p>约束从上往下递减。</p>
+<p><img src="/img/mac/image-20220317194936376.png" srcset="/img/loading.gif" lazyload alt="image-20220317194936376">判断出现死锁的开销挺大的，所以有的操作系统干脆忽略死锁。</p>
+<h3 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h3><p>就是让死锁不出现。</p>
+<p>只要把死锁出现之后的四个条件之一打破，就可以预防死锁。</p>
+<p><img src="/img/mac/image-20220317195216164.png" srcset="/img/loading.gif" lazyload alt="image-20220317195216164"></p>
+<p>如果互斥不满足，会带来不确定性问题，不好。</p>
+<p>占用并等待：极端一点，如果每个进程要 hold 所有的资源才能运行，这样虽然可以运行，但是饥饿现象非常明显。</p>
+<p><img src="/img/mac/image-20220317195613561.png" srcset="/img/loading.gif" lazyload alt="image-20220317195613561"></p>
+<p>要让无抢占不执行，只能把对应的进程 kill 掉让他释放资源。</p>
+<p>将循环等待打破是可行的，将资源类型排序，。。。</p>
+<h3 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h3><p>进程获取资源前先进行判断，如果有可能发生死锁，就不把资源给他。要进行这样的判断需要一些条件</p>
+<p><img src="/img/mac/image-20220317200145674.png" srcset="/img/loading.gif" lazyload alt="image-20220317200145674"></p>
+<p>进程先确定自己需要的资源数量和大小等等，如果超出了自己的需求，系统就可以不给他分配资源。</p>
+<p>动态检查进程获取资源后是否可能出现环，如果会出现就不给其分配资源</p>
+<p><img src="/img/mac/image-20220317200750121.png" srcset="/img/loading.gif" lazyload alt="image-20220317200750121"></p>
+<p>安全序列：一个进程一定能够等到他所需要的资源从而顺利结束。就是对于一个进程 pi ， 他所需的资源可以由 p0 到 pi-1 所拥有的资源满足。</p>
+<p><img src="/img/mac/image-20220317201345547.png" srcset="/img/loading.gif" lazyload alt="image-20220317201345547"></p>
+<p><img src="/img/mac/image-20220317201436043.png" srcset="/img/loading.gif" lazyload alt="image-20220317201436043"></p>
+<p>虚线表示进程所需要的资源。</p>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p>简单点 说就是银行贷款钱一定要收的回来，如果钱没法回来，就不给他钱。<img src="/img/mac/image-20220318085930854.png" srcset="/img/loading.gif" lazyload alt="image-20220318085930854"></p>
+<p><img src="/img/mac/image-20220318090131091.png" srcset="/img/loading.gif" lazyload alt="image-20220318090131091"></p>
+<p>寻找我们前面所说的 safe 序列</p>
+<p><img src="/img/mac/image-20220318090625347.png" srcset="/img/loading.gif" lazyload alt="image-20220318090625347"></p>
+<p>max 矩阵：pi 需要资源 rj 的资源个数</p>
+<p>available</p>
+<p>allocation：pi 已有资源 rj 的个数</p>
+<p>need ： pi 未来可能需要资源 rj 的个数</p>
+<p>need= max - allocationa</p>
+<p><img src="/img/mac/image-20220318091205552.png" srcset="/img/loading.gif" lazyload alt="image-20220318091205552"></p>
+<p>finish i = true 表示进程的资源可以得到满足，并且正常结束</p>
+<p>如果 need i 的每一个资源都小于 work</p>
+<p>这个进程就能正常结束</p>
+<p>这个进程正常结束后，这个进程所拥有的资源全部释放，转给 work</p>
+<p>上述为判断安全的算法，我们接下来以他为基础来构建银行家算法</p>
+<p><img src="/img/mac/image-20220318091620719.png" srcset="/img/loading.gif" lazyload alt="image-20220318091620719"></p>
+<p>举个例子</p>
+<p><img src="/img/mac/image-20220318091952493.png" srcset="/img/loading.gif" lazyload alt="image-20220318091952493"></p>
+<p><img src="/img/mac/image-20220318092008662.png" srcset="/img/loading.gif" lazyload alt="image-20220318092008662"></p>
+<p>首先找一个进程所需资源 need&lt;available</p>
+<p>找到了 p2，所以把 p2 的 allocate 还给 available</p>
+<p>接着，我们可以选择 p1，流程和上面是一样的。继续实现下去我们就能得到一个 safe 序列。</p>
+<p>另一个例子</p>
+<p>如果 available 原先是 112，p1 发起一次 101 的资源获取请求之后变成这样</p>
+<p><img src="/img/mac/image-20220318092724846.png" srcset="/img/loading.gif" lazyload alt="image-20220318092724846"></p>
+<p>这时候没有一个进程的资源能够得到满足，说明这是一个 unsafe 队列，我们的银行家算法不会满足这次 p1 的资源请求</p>
+<h3 id="死锁检测"><a href="#死锁检测" class="headerlink" title="死锁检测"></a>死锁检测</h3><p>和上面的死锁避免相比，我们的条件再次放宽</p>
+<p><img src="/img/mac/image-20220318092934188.png" srcset="/img/loading.gif" lazyload alt="image-20220318092934188"></p>
+<p>可以死锁，死锁后将其查出来。</p>
+<p>我们对上面的资源分配图简化一下，变成进程等待图</p>
+<p><img src="/img/mac/image-20220318093106060.png" srcset="/img/loading.gif" lazyload alt="image-20220318093106060"></p>
+<p><img src="/img/mac/image-20220318093132432.png" srcset="/img/loading.gif" lazyload alt="image-20220318093132432"></p>
+<h4 id="死锁检测算法"><a href="#死锁检测算法" class="headerlink" title="死锁检测算法"></a>死锁检测算法</h4><p><img src="/img/mac/image-20220318093343953.png" srcset="/img/loading.gif" lazyload alt="image-20220318093343953"></p>
+<p>我们一般很少使用银行家算法和死锁检测算法，一个是系统很难知道每个进程所需要的资源总数，一个是死锁检测开销很大。</p>
+<p><img src="/img/mac/image-20220318094441978.png" srcset="/img/loading.gif" lazyload alt="image-20220318094441978"></p>
+<p>available 初始值为 000</p>
+<p>safe 队列的顺序是 p0 p2 p1 p3 p4</p>
+<p>有可能出现死锁的情况</p>
+<p><img src="/img/mac/image-20220318094541898.png" srcset="/img/loading.gif" lazyload alt="image-20220318094541898"></p>
+<p><img src="/img/mac/image-20220318094911813.png" srcset="/img/loading.gif" lazyload alt="image-20220318094911813"></p>
+<h3 id="死锁恢复"><a href="#死锁恢复" class="headerlink" title="死锁恢复"></a>死锁恢复</h3><p>如果已经发生死锁了，看下如何解决</p>
+<p>一般是 kill 一个进程，判断的依据如下</p>
+<p><img src="/img/mac/image-20220318095031507.png" srcset="/img/loading.gif" lazyload alt="image-20220318095031507"></p>
+<p><img src="/img/mac/image-20220318095246411.png" srcset="/img/loading.gif" lazyload alt="image-20220318095246411"></p>
+<p>正常操作系统一般都是用鸵鸟办法，就是不管死锁，出现了就 reboot</p>
+<h2 id="进程间通信-IPC"><a href="#进程间通信-IPC" class="headerlink" title="进程间通信 IPC"></a>进程间通信 IPC</h2><p><img src="/img/mac/image-20220318095606638.png" srcset="/img/loading.gif" lazyload alt="image-20220318095606638"></p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="/img/mac/image-20220318095722807.png" srcset="/img/loading.gif" lazyload alt="image-20220318095722807"></p>
+<p>间接通信和直接通信</p>
+<p><img src="/img/mac/image-20220318095809696.png" srcset="/img/loading.gif" lazyload alt="image-20220318095809696"></p>
+<p>左边类似于发邮件，邮件先投递到邮局，再转交。</p>
+<p><img src="/img/mac/image-20220318095918007.png" srcset="/img/loading.gif" lazyload alt="image-20220318095918007"></p>
+<p>通信链路的建立需要操作系统来完成</p>
+<p><img src="/img/mac/image-20220318100018653.png" srcset="/img/loading.gif" lazyload alt="image-20220318100018653"></p>
+<p><img src="/img/mac/image-20220318100111196.png" srcset="/img/loading.gif" lazyload alt="image-20220318100111196"></p>
+<p>从发送的路径来看可以分为直接和间接</p>
+<p>阻塞，发消息的时候发送者进入 block，知道消息被接受；接受时，接受者阻塞直到这个消息是 available 的</p>
+<p>非阻塞，sender 发送消息并且能持续执行；</p>
+<p><img src="/img/mac/image-20220318100249506.png" srcset="/img/loading.gif" lazyload alt="image-20220318100249506"></p>
+<p>通信链路缓冲</p>
+<p>发送的数据有一个缓存，当缓存的容量有三种以下情况</p>
+<p><img src="/img/mac/image-20220318100616756.png" srcset="/img/loading.gif" lazyload alt="image-20220318100616756"></p>
+<h3 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h3><p>signal 类似于硬件的中断机制，由软件打断当前正在运行的应用程序</p>
+<p><img src="/img/mac/image-20220318100932053.png" srcset="/img/loading.gif" lazyload alt="image-20220318100932053"></p>
+<p>catch：产生哪个信号，做哪种响应</p>
+<p>信号一般只起通知作用，不传输数据。</p>
+<p>具体实现</p>
+<p><img src="/img/mac/image-20220318101523946.png" srcset="/img/loading.gif" lazyload alt="image-20220318101523946"></p>
+<p>应用程序先注册针对某个信号的 handle 给 os，当产生对应的信号后，会让该应用程序调用对应的信号处理函数；</p>
+<p>当 os 收到信号时，他运行在内核态；当要返回用户态去执行相应信号的那个应用程序时，他返回的点是调用信号处理函数的地方，这是通过修改应用程序的调用堆栈实现的。</p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道是用来数据交换的，是很早的进程间通信机制。</p>
+<p>其实很像 linux 的管道符</p>
+<p>把管道符前面的结果作为管道符后面的输入</p>
+<p>把输出重定向为管道，不是原来的 stdout</p>
+<p><img src="/img/mac/image-20220318102720762.png" srcset="/img/loading.gif" lazyload alt="image-20220318102720762"></p>
+<p>管道实际上就是内核中的一个 buffer</p>
+<p>shell 是 ls 和 more 的父进程，子进程可以继承一些父进程的资源</p>
+<p>​</p>
+<h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>和管道的区别</p>
+<p>管道其实是父进程帮子进程建立好的通道</p>
+<p>如果没有父子关系，就无法正常运作。</p>
+<p>管道里的数据是一种字节流，没有结构化的表示形式。</p>
+<p>这两种在消息队列里都可以解决</p>
+<p>没有父子关系，字符流等等。。。</p>
+<p><img src="/img/mac/image-20220318103559456.png" srcset="/img/loading.gif" lazyload alt="image-20220318103559456"></p>
+<h3 id="共享空间"><a href="#共享空间" class="headerlink" title="共享空间"></a>共享空间</h3><p>操作系统创建的共享区域，每个进程都可以读和写，但是需要同步互斥来保证其安全性。</p>
+<p><img src="/img/mac/image-20220318103707853.png" srcset="/img/loading.gif" lazyload alt="image-20220318103707853"></p>
+<p><img src="/img/mac/image-20220318103942389.png" srcset="/img/loading.gif" lazyload alt="image-20220318103942389"></p>
+<p>不同的逻辑地址映射同一块物理地址空间。</p>
+<h1 id="第十二课-文件系统"><a href="#第十二课-文件系统" class="headerlink" title="第十二课 文件系统"></a>第十二课 文件系统</h1><p><img src="/img/mac/image-20220318105155526.png" srcset="/img/loading.gif" lazyload alt="image-20220318105155526"></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><img src="/img/mac/image-20220318105337112.png" srcset="/img/loading.gif" lazyload alt="image-20220318105337112"></p>
+<h3 id="文件系统和文件"><a href="#文件系统和文件" class="headerlink" title="文件系统和文件"></a>文件系统和文件</h3><p>定义</p>
+<p><img src="/img/mac/image-20220318105918029.png" srcset="/img/loading.gif" lazyload alt="image-20220318105918029"></p>
+<p>很多地方都存在文件系统；存储的最小粒度都是文件。创建、删除、读写的也都是文件。</p>
+<p>硬盘眼中的文件</p>
+<p><img src="/img/mac/image-20220318110131277.png" srcset="/img/loading.gif" lazyload alt="image-20220318110131277"></p>
+<p>文件和块</p>
+<p><img src="/img/mac/image-20220318110346598.png" srcset="/img/loading.gif" lazyload alt="image-20220318110346598"></p>
+<h3 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h3><p><img src="/img/mac/image-20220318110513636.png" srcset="/img/loading.gif" lazyload alt="image-20220318110513636"></p>
+<p>文件使用模式：这个 f 就是文件描述符，是一个整数。也是打开文件表的索引。</p>
+<p><img src="/img/mac/image-20220318110749255.png" srcset="/img/loading.gif" lazyload alt="image-20220318110749255"></p>
+<p>文件打开计数：只有没有进程在使用文件时，才能把文件从内存中抹去。</p>
+<p>访问权限：每个程序对这个文件是只读还是其他的。</p>
+<p><img src="/img/mac/image-20220318111130240.png" srcset="/img/loading.gif" lazyload alt="image-20220318111130240"></p>
+<p>磁盘访问的基本单位是一个扇区</p>
+<p><img src="/img/mac/image-20220318111402627.png" srcset="/img/loading.gif" lazyload alt="image-20220318111402627"></p>
+<p>用户看到的是一个抽象的一维空间，操作系统看到的是一个个块。</p>
+<p><img src="/img/mac/image-20220318111457035.png" srcset="/img/loading.gif" lazyload alt="image-20220318111457035"></p>
+<p>文件结构</p>
+<p><img src="/img/mac/image-20220318111908089.png" srcset="/img/loading.gif" lazyload alt="image-20220318111908089"></p>
+<p>这些结构由应用程序来识别，操作系统只以一种简洁的/统一的方式来理解他们（一串普通的字节流)</p>
+<p>访问控制</p>
+<p>linux 读写执行等等</p>
+<p><img src="/img/mac/image-20220318112110916.png" srcset="/img/loading.gif" lazyload alt="image-20220318112110916"></p>
+<p>语义</p>
+<p>一个用户对用户的写入对其他人是否可见</p>
+<p><img src="/img/mac/image-20220318112505107.png" srcset="/img/loading.gif" lazyload alt="image-20220318112505107"></p>
+<p>确保写同一块内容有同步互斥机制。</p>
+<p>锁：以文件为锁，或者以文件的某一块作为锁，可以有不同粒度的实现。</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="/img/mac/image-20220318112853605.png" srcset="/img/loading.gif" lazyload alt="image-20220318112853605"></p>
+<p>对目录有哪些操作</p>
+<p><img src="/img/mac/image-20220318112953652.png" srcset="/img/loading.gif" lazyload alt="image-20220318112953652"></p>
+<p>目录里的文件怎么存？</p>
+<p>数组/链表/hash</p>
+<p><img src="/img/mac/image-20220318113125505.png" srcset="/img/loading.gif" lazyload alt="image-20220318113125505"></p>
+<p>路径遍历</p>
+<p><img src="/img/mac/image-20220318113203969.png" srcset="/img/loading.gif" lazyload alt="image-20220318113203969"></p>
+<p>挂载</p>
+<p><img src="/img/mac/image-20220318113457887.png" srcset="/img/loading.gif" lazyload alt="image-20220318113457887"></p>
+<p>不同类型的文件系统要挂在不同的目录。挂载点在用户看来是一个目录，代表了根的起始位置。</p>
+<h3 id="文件别名"><a href="#文件别名" class="headerlink" title="文件别名"></a>文件别名</h3><p><img src="/img/mac/image-20220318113943889.png" srcset="/img/loading.gif" lazyload alt="image-20220318113943889"></p>
+<p>软连接：一个文件的内容存的是另一个文件的路径名</p>
+<p><img src="/img/mac/image-20220318114246021.png" srcset="/img/loading.gif" lazyload alt="image-20220318114246021"></p>
+<p>删除了一个有别名的文件 yinyong，只是他的文件引用数量减少了 1，并没有完全删除，这种方式可以用 backpointers 来实现。</p>
+<p>潜在风险</p>
+<p><img src="/img/mac/image-20220318114811727.png" srcset="/img/loading.gif" lazyload alt="image-20220318114811727"></p>
+<h3 id="文件系统种类"><a href="#文件系统种类" class="headerlink" title="文件系统种类"></a>文件系统种类</h3><p><img src="/img/mac/image-20220318144114875.png" srcset="/img/loading.gif" lazyload alt="image-20220318144114875"></p>
+<p>日志文件系统：保证内容一致性的问题，防止因掉电而丢失数据等。如 mysql 的 redolog 和 undolog。</p>
+<p>其他文件系统没有过多的深入了解。</p>
+<p>想更多的了解可以查看维基百科。</p>
+<p>分布式文件系统</p>
+<p><img src="/img/mac/image-20220318144733701.png" srcset="/img/loading.gif" lazyload alt="image-20220318144733701"></p>
+<h2 id="虚拟文件系统"><a href="#虚拟文件系统" class="headerlink" title="虚拟文件系统"></a>虚拟文件系统</h2><p>站在实现的角度来理解文件系统</p>
+<p><img src="/img/mac/image-20220318145038802.png" srcset="/img/loading.gif" lazyload alt="image-20220318145038802"></p>
+<p>屏蔽应用程序对不同的文件系统的差异性，只提供了文件系统 api，这些 api 其实就是简单的 read write ， 但是应用程序看到这些就足够了。</p>
+<p>另一个角度，文件系统有可能是不同的形式，如 network io，虽然底层存在差异，但是通过虚拟文件系统，可以屏蔽这些不一致。</p>
+<p><img src="/img/mac/image-20220318145640781.png" srcset="/img/loading.gif" lazyload alt="image-20220318145640781"></p>
+<p>文件系统、文件、目录的元数据</p>
+<p><img src="/img/mac/image-20220318150037321.png" srcset="/img/loading.gif" lazyload alt="image-20220318150037321"></p>
+<p><img src="/img/mac/image-20220318150235386.png" srcset="/img/loading.gif" lazyload alt="image-20220318150235386"></p>
+<p>三个块都会映射到磁盘中的扇区</p>
+<p><img src="/img/mac/image-20220318150337122.png" srcset="/img/loading.gif" lazyload alt="image-20220318150337122"></p>
+<p>我们什么时候把文件系统加载到内存中？</p>
+<p><img src="/img/mac/image-20220318150427738.png" srcset="/img/loading.gif" lazyload alt="image-20220318150427738"></p>
+<h2 id="数据块缓存"><a href="#数据块缓存" class="headerlink" title="数据块缓存"></a>数据块缓存</h2><p>把常用的数据缓冲到内存，加快查询速度。</p>
+<p><img src="/img/mac/image-20220318150715435.png" srcset="/img/loading.gif" lazyload alt="image-20220318150715435"></p>
+<p><img src="/img/mac/image-20220318150849097.png" srcset="/img/loading.gif" lazyload alt="image-20220318150849097"></p>
+<p>类似于页替换算法</p>
+<p><img src="/img/mac/image-20220318151007899.png" srcset="/img/loading.gif" lazyload alt="image-20220318151007899"></p>
+<h2 id="打开文件的数据结构"><a href="#打开文件的数据结构" class="headerlink" title="打开文件的数据结构"></a>打开文件的数据结构</h2><p>把文件控制块的内容读到内存中</p>
+<p>根据 f= read（），找到对应的文件表</p>
+<p><img src="/img/mac/image-20220318151306935.png" srcset="/img/loading.gif" lazyload alt="image-20220318151306935"></p>
+<p>找到对应的文件后，根据一个 offset，来确定要对文件中的哪一块进行读或者写。</p>
+<p>offset 经过转换变成 disk 的一个扇区内的编号，文件系统把具体的数据读到内存中来。</p>
+<p><img src="/img/mac/image-20220318151731931.png" srcset="/img/loading.gif" lazyload alt="image-20220318151731931"></p>
+<p>一些保护机制</p>
+<p><img src="/img/mac/image-20220318151811608.png" srcset="/img/loading.gif" lazyload alt="image-20220318151811608"></p>
+<h2 id="文件分配"><a href="#文件分配" class="headerlink" title="文件分配"></a>文件分配</h2><p><img src="/img/mac/image-20220318151935490.png" srcset="/img/loading.gif" lazyload alt="image-20220318151935490"></p>
+<p><img src="/img/mac/image-20220318152020907.png" srcset="/img/loading.gif" lazyload alt="image-20220318152020907"></p>
+<h3 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h3><p><img src="/img/mac/image-20220318152131908.png" srcset="/img/loading.gif" lazyload alt="image-20220318152131908"></p>
+<p>如果要对文件做扩展，而后面已经有文件了，那开销挺大。</p>
+<p>分配策略可以参考内存的最佳适配，最差适配，首次适配等等。</p>
+<h3 id="链式分配"><a href="#链式分配" class="headerlink" title="链式分配"></a>链式分配</h3><p><img src="/img/mac/image-20220318152643126.png" srcset="/img/loading.gif" lazyload alt="image-20220318152643126"></p>
+<p>不能高效的进行随机访问。</p>
+<h3 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h3><p>指向这些文件的数据放在哪个索引数据块</p>
+<p><img src="/img/mac/image-20220318152833224.png" srcset="/img/loading.gif" lazyload alt="image-20220318152833224"></p>
+<p>大文件的索引分配</p>
+<p>将索引分级等</p>
+<p><img src="/img/mac/image-20220318153053760.png" srcset="/img/loading.gif" lazyload alt="image-20220318153053760"></p>
+<p>早期 unix 的索引分级</p>
+<p><img src="/img/mac/image-20220318153314140.png" srcset="/img/loading.gif" lazyload alt="image-20220318153314140"></p>
+<p><img src="/img/mac/image-20220318153338618.png" srcset="/img/loading.gif" lazyload alt="image-20220318153338618"></p>
+<h2 id="空闲空间列表"><a href="#空闲空间列表" class="headerlink" title="空闲空间列表"></a>空闲空间列表</h2><p><img src="/img/mac/image-20220318153648848.png" srcset="/img/loading.gif" lazyload alt="image-20220318153648848"></p>
+<p>安全性的保证</p>
+<p><img src="/img/mac/image-20220318153824536.png" srcset="/img/loading.gif" lazyload alt="image-20220318153824536"></p>
+<p>其他形式：</p>
+<p><img src="/img/mac/image-20220318153925945.png" srcset="/img/loading.gif" lazyload alt="image-20220318153925945"></p>
+<h2 id="多磁盘管理"><a href="#多磁盘管理" class="headerlink" title="多磁盘管理"></a>多磁盘管理</h2><p><img src="/img/mac/image-20220318154232176.png" srcset="/img/loading.gif" lazyload alt="image-20220318154232176"></p>
+<p><img src="/img/mac/image-20220318154349159.png" srcset="/img/loading.gif" lazyload alt="image-20220318154349159"></p>
+<p><img src="/img/mac/image-20220318154517682.png" srcset="/img/loading.gif" lazyload alt="image-20220318154517682"></p>
+<p>软 raid，操作系统位于磁盘之上进行磁盘管理。</p>
+<p>硬 raid，将磁盘管理置入芯片中。</p>
+<p>Raid0:</p>
+<p><img src="/img/mac/image-20220318154844102.png" srcset="/img/loading.gif" lazyload alt="image-20220318154844102"></p>
+<p>把不同的数据放在不同的硬盘上，把这些数据并行的读取出来。</p>
+<p>raid1:</p>
+<p><img src="/img/mac/image-20220318154947692.png" srcset="/img/loading.gif" lazyload alt="image-20220318154947692"></p>
+<p>Raid4:</p>
+<p><img src="/img/mac/image-20220318155130911.png" srcset="/img/loading.gif" lazyload alt="image-20220318155130911"></p>
+<p>用四个盘来进行并行，用一个盘来进行故障恢复。</p>
+<p>瓶颈：故障恢复盘的读写非常频繁。</p>
+<p>raid5:</p>
+<p>保证了高可靠性，还提高了效率。</p>
+<p>将奇偶校验分散到每个盘中</p>
+<p><img src="/img/mac/image-20220318155431242.png" srcset="/img/loading.gif" lazyload alt="image-20220318155431242"></p>
+<h2 id="磁盘调度"><a href="#磁盘调度" class="headerlink" title="磁盘调度"></a>磁盘调度</h2><p><img src="/img/mac/image-20220318155827444.png" srcset="/img/loading.gif" lazyload alt="image-20220318155827444"></p>
+<p><img src="/img/mac/image-20220318155950645.png" srcset="/img/loading.gif" lazyload alt="image-20220318155950645"></p>
+<p>访问时间 = 寻道时间+旋转延迟时间+数据访问时间</p>
+<p><img src="/img/mac/image-20220318160226944.png" srcset="/img/loading.gif" lazyload alt="image-20220318160226944"></p>
+<p>随机 io 效率很低，因为要不停的寻道</p>
+<p>fifo 的磁盘访问</p>
+<p><img src="/img/mac/image-20220318160422893.png" srcset="/img/loading.gif" lazyload alt="image-20220318160422893"></p>
+<p>简单，但是效率低</p>
+<p><img src="/img/mac/image-20220318160518959.png" srcset="/img/loading.gif" lazyload alt="image-20220318160518959"></p>
+<p>短服务优先</p>
+<p><img src="/img/mac/image-20220318160553156.png" srcset="/img/loading.gif" lazyload alt="image-20220318160553156"></p>
+<p>有可能导致饥饿现象，让磁头在一小块区域打转，有不公平性</p>
+<p>电梯</p>
+<p>磁头走到头，再走到尾</p>
+<p><img src="/img/mac/image-20220318160750317.png" srcset="/img/loading.gif" lazyload alt="image-20220318160750317"></p>
+<p>上面是两种方向，优化成仅在一种方向上扫描</p>
+<p><img src="/img/mac/image-20220318160956174.png" srcset="/img/loading.gif" lazyload alt="image-20220318160956174"></p>
+<p>走到一条路上最后的请求点</p>
+<p><img src="/img/mac/image-20220318161130204.png" srcset="/img/loading.gif" lazyload alt="image-20220318161130204"></p>
+<p><img src="/img/mac/image-20220318161255596.png" srcset="/img/loading.gif" lazyload alt="image-20220318161255596"></p>
+<p><img src="/img/mac/image-20220318161355144.png" srcset="/img/loading.gif" lazyload alt="image-20220318161355144"></p>
+<p>理解就好，实际情况跟这些完全不一样。</p>
+<div class="code-wrapper"><pre><code class="hljs">1. *
+</code></pre></div>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/os/">os</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/os/">os</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/12/JUC-3/">
+                        <span class="hidden-mobile">JUC-3</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
