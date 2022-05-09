@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>常用 Git 指令</title>
+    <link href="/2022/05/09/git-pro/"/>
+    <url>/2022/05/09/git-pro/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Git 指令</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IDEA 在 Windows &amp; Mac 下的快捷键</title>
+    <link href="/2022/05/09/idea-properties/"/>
+    <url>/2022/05/09/idea-properties/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Windows-下的快捷键"><a href="#Windows-下的快捷键" class="headerlink" title="Windows 下的快捷键"></a>Windows 下的快捷键</h1><ul><li><p>ctrl + N 查找类</p></li><li><p>alt + 7 查看当前类的属性以及方法。</p></li><li><p>ctrl+D 复制粘贴当前行</p></li><li><p>ctrl + / 快速注释</p></li><li><p>ctrl + P 查看括号内的参数</p></li><li><p>ctrl + O 快速重写方法</p></li><li><p>ctrl + R 替换</p></li><li><p>ctrl + H 查找继承结构</p></li><li><p>ctrl + Alt + T 快速生成包围代码块</p></li><li><p>Alt + Shift + ↑ IDEA 上下移动一行</p></li><li><p>ctrl + Y 删除一行</p></li><li><p>ctrl + alt + L 对选中代码进行格式化</p></li><li><p>ctrl + F 查找</p></li><li><p>ctrl + F12 查看当前类的所有方法</p></li><li><p>在注解类中，按 Alt + 7 , 可以查看注解类拥有哪些属性</p></li><li><p>在接口中按 ctrl+shift+T , 可以进行代码的测试 test 工作</p></li></ul><h1 id="Mac-下的快捷键"><a href="#Mac-下的快捷键" class="headerlink" title="Mac 下的快捷键"></a>Mac 下的快捷键</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>快捷键</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IDEA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java 并发-第三部分</title>
     <link href="/2022/04/12/JUC-3/"/>
     <url>/2022/04/12/JUC-3/</url>
