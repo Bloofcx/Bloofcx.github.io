@@ -16,15 +16,15 @@
   <meta name="author" content="Bloo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Synchronized 的原理和 Java 中常见的锁。">
+    <meta name="description" content="Volatile 关键字的作用和相关原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Synchronized 关键字">
-<meta property="og:url" content="https://bloofcx.github.io/2022/05/18/Synchronized/index.html">
+<meta property="og:title" content="volatile">
+<meta property="og:url" content="https://bloofcx.github.io/2022/05/23/volatile/index.html">
 <meta property="og:site_name" content="Chen Xu | Blog">
-<meta property="og:description" content="Synchronized 的原理和 Java 中常见的锁。">
+<meta property="og:description" content="Volatile 关键字的作用和相关原理">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-18T07:10:17.000Z">
-<meta property="article:modified_time" content="2022-05-18T07:13:55.105Z">
+<meta property="article:published_time" content="2022-05-23T07:47:26.000Z">
+<meta property="article:modified_time" content="2022-05-23T08:23:45.009Z">
 <meta property="article:author" content="Bloo">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="并发">
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Synchronized 关键字 - Chen Xu | Blog</title>
+  <title>volatile - Chen Xu | Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -178,7 +178,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Synchronized 关键字">
+            <span class="h2" id="subtitle" title="volatile">
               
             </span>
 
@@ -188,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-18 15:10" pubdate>
-        May 18, 2022 pm
+      <time datetime="2022-05-23 15:47" pubdate>
+        May 23, 2022 pm
       </time>
     </span>
   
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.1k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      10 分钟
     </span>
   
 
@@ -237,34 +237,39 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Synchronized 关键字</h1>
+            <h1 style="display: none">volatile</h1>
             
             <div class="markdown-body">
-              <h1 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h1><h2 id="加锁原理"><a href="#加锁原理" class="headerlink" title="加锁原理"></a>加锁原理</h2><p>假设以 obj 对象作为锁</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<br><br><span class="hljs-keyword">synchronized</span>(obj) &#123;<br> <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+              <h1 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h1><h2 id="作用详解"><a href="#作用详解" class="headerlink" title="作用详解"></a>作用详解</h2><h3 id="防重排序"><a href="#防重排序" class="headerlink" title="防重排序"></a>防重排序</h3><p>以 double-check 单例为例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> Singleton singleton;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 构造函数私有，禁止外部实例化</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;&#125;;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 这里的 singleton</span><br>        <span class="hljs-keyword">if</span> (singleton == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">synchronized</span> (singleton.class) &#123;<br>                <span class="hljs-keyword">if</span> (singleton == <span class="hljs-literal">null</span>) &#123;<br>                    singleton = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> singleton;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<p>obj 对象在同一时间只与一个 monitor(锁)相关联，而一个 monitor 在同一时间只能被一个线程获得。</p>
-<p>任意线程对 obj 的访问，首先要获得 obj 的监视器。如果获取失败，当前线程就进入了 BLOCKED 阻塞状态，即进入了一个同步队列 SynchronizedQueue。当收到 Monitor Exit 通知后，出队列。</p>
-<h2 id="可重入原理"><a href="#可重入原理" class="headerlink" title="可重入原理"></a>可重入原理</h2><p>每个 Monitor 中有一个计数器，如果当前已获得 Monitor 锁的线程再次执行 Monitor Enter 指令，则计数 +1。</p>
-<p>释放锁后，计数 -1。</p>
-<h2 id="JVM-中锁的优化"><a href="#JVM-中锁的优化" class="headerlink" title="JVM 中锁的优化"></a>JVM 中锁的优化</h2><h3 id="Java-中锁的类型"><a href="#Java-中锁的类型" class="headerlink" title="Java 中锁的类型"></a>Java 中锁的类型</h3><p><code>无锁</code> <code>偏向锁</code> <code>轻量级锁</code> <code>重量级锁</code></p>
-<p>锁膨胀方向： 无锁 → 偏向锁 → 轻量级锁 → 重量级锁 (此过程是不可逆的)</p>
-<h3 id="自旋锁和自适应自旋锁"><a href="#自旋锁和自适应自旋锁" class="headerlink" title="自旋锁和自适应自旋锁"></a>自旋锁和自适应自旋锁</h3><h4 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h4><p>线程挂起和恢复需要转入内核态进行操作，这对性能有较大的影响。</p>
-<p>Synchronized 没有获取到锁时，不是马上将当前线程挂起，而是自旋等待锁的释放。</p>
-<h4 id="自适应自旋锁"><a href="#自适应自旋锁" class="headerlink" title="自适应自旋锁"></a>自适应自旋锁</h4><p>更加灵活的更改自旋的时间。</p>
-<p>如果自旋等待刚刚成功获取过锁，那么 JVM 会认为该锁自旋获取到锁的可能性较大，会自动的增加等待时间。</p>
-<h3 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h3><p>虚拟机即时编译器运行时，对一些代码上要求了同步，但是被检测到不可能存在共享数据竞争的锁进行消除。</p>
-<h3 id="锁粗化"><a href="#锁粗化" class="headerlink" title="锁粗化"></a>锁粗化</h3><p>即使没有线程竞争，频繁的对同一对象反复加锁和解锁也会导致性能降低。</p>
-<p>JVM 会将加锁同步的范围扩展到一系列操作的外部。减少加锁的次数。</p>
-<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><p>在 JDK 1.6 之后引入的轻量级锁，目的是对在大多数情况下同步块并不会有竞争出现提出的一种优化。</p>
-<p>在对象头中(<code>Object Header</code>)存在两部分。第一部分用于存储对象自身的运行时数据，<code>HashCode</code>、<code>GC Age</code>、<code>锁标记位</code>、<code>是否为偏向锁</code>。等。一般为 32 位或者 64 位(视操作系统位数定)。官方称之为<code>Mark Word</code>，它是实现轻量级锁和偏向锁的关键。 另外一部分存储的是指向方法区对象类型数据的指针(<code>Klass Point</code>)，如果对象是数组的话，还会有一个额外的部分用于存储数据的长度。</p>
-<h4 id="轻量级锁加锁"><a href="#轻量级锁加锁" class="headerlink" title="轻量级锁加锁"></a>轻量级锁加锁</h4><p>在线程执行同步块之前，JVM 会在栈帧中创建一个<code> Lock Record</code> 。</p>
-<p>如果 CAS 操作将对象头中的标志位 <code>01</code> 改为 <code>00</code> 成功，<code>Lock Record</code> 会拷贝锁对象目前的 <code>Mark Word</code> ，锁对象的 <code>Mark Word</code> 更新为指向 <code>Lock Record</code> （栈帧）的指针。同时将对象头中的锁标记位改为 <code>00</code> ，表示轻量级锁。</p>
-<p>如果这个 CAS 操作失败了，JVM 会检查对象头中的 <code>Mark Word</code> 是否存在指向当前线程的栈帧的指针，如果存在则说明该锁已经被获取，可以直接调用。如果不存在，说明当前有两个或以上的线程竞争同一把锁，轻量级锁升级为重量级锁，对象头中的 <code>Mark Word</code> 指向重量级锁的指针。</p>
-<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><p>背景：抹掉 <code>同一个线程</code> 反复获取锁和释放锁带来的性能开销。</p>
-<p>总是偏向第一个获取锁对象的线程。</p>
-<p>当一个线程访问同步块并获取锁时，会在对象头和栈帧中的锁记录里存储锁偏向的线程 ID，以后该线程在进入和退出同步块时不需要进行 CAS 操作来加锁和解锁。只需要简单的测试一下对象头的<code>Mark Word</code>里是否存储着指向当前线程的偏向锁。如果成功，表示线程已经获取到了锁。</p>
-<p>在 Mark Word 中倒数第三位为标志位 ……101</p>
+<p>实例化一个对象分为三个步骤：</p>
+<ul>
+<li>分配内存空间</li>
+<li>初始化对象</li>
+<li>将内存空间的地址赋值给对应的引用</li>
+</ul>
+<p>如果第二步和第三步发生了 <code>指令重排</code>，会导致某个线程得到未初始化完全的对象，导致不可预料的后果。</p>
+<h3 id="实现可见性"><a href="#实现可见性" class="headerlink" title="实现可见性"></a>实现可见性</h3><p>解决由于 CPU Cache ，或者说是线程工作内存引起的可见性问题。</p>
+<p>被 volatile 修饰的变量的写会同步到主存当中。</p>
+<p>被 volatile 修饰的变量的读会从主存当中读取。</p>
+<p>原理是 内存屏障 。</p>
+<h3 id="保证单次读-写的原子性"><a href="#保证单次读-写的原子性" class="headerlink" title="保证单次读/写的原子性"></a>保证单次读/写的原子性</h3><p>这里的单次读/写，是指令级别的。</p>
+<p>举个例子，i++操作实际上是一次读 + 一次写。</p>
+<ul>
+<li>读取 i 的值</li>
+<li>将 i 的值 +1</li>
+<li>将 i 的值写回</li>
+</ul>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="volatile-的可见性实现"><a href="#volatile-的可见性实现" class="headerlink" title="volatile 的可见性实现"></a>volatile 的可见性实现</h3><ul>
+<li><p>内存屏障，又称内存栅栏，是一个 CPU 指令。</p>
+</li>
+<li><p>在程序运行时，为了提高执行性能，编译器和处理器会对指令进行重排序，JMM 为了保证在不同的编译器和 CPU 上有相同的结果，通过插入特定类型的内存屏障来禁止+ 特定类型的编译器重排序和处理器重排序，插入一条内存屏障会告诉编译器和 CPU：不管什么指令都不能和这条 Memory Barrier 指令重排序。</p>
+</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="一次安全发布"><a href="#一次安全发布" class="headerlink" title="一次安全发布"></a>一次安全发布</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//单例的 double-check</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="状态标志"><a href="#状态标志" class="headerlink" title="状态标志"></a>状态标志</h3><h3 id="独立观察"><a href="#独立观察" class="headerlink" title="独立观察"></a>独立观察</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserManager</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">volatile</span> String lastUser;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">authenticate</span><span class="hljs-params">(String user, String password)</span> &#123;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">valid</span> <span class="hljs-operator">=</span> passwordIsValid(user, password);<br>        <span class="hljs-keyword">if</span> (valid) &#123;<br>            <span class="hljs-type">User</span> <span class="hljs-variable">u</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br>            activeUsers.add(u);<br>            lastUser = user;<br>        &#125;<br>        <span class="hljs-keyword">return</span> valid;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -303,9 +308,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/23/volatile/">
+                      <a href="/2022/05/23/bfs/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">volatile</span>
+                        <span class="hidden-mobile">BFS 学习专栏</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -313,8 +318,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/09/git-pro/">
-                        <span class="hidden-mobile">常用 Git 指令</span>
+                      <a href="/2022/05/18/Synchronized/">
+                        <span class="hidden-mobile">Synchronized 关键字</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
